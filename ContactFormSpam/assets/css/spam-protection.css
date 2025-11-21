@@ -1,0 +1,404 @@
+/**
+ * CSS Spam Protection Styles for Contact Form
+ * 
+ * This stylesheet provides multiple layers of visual spam protection:
+ * - Honeypot field hiding techniques
+ * - Anti-bot visual deterrents
+ * - Progressive disclosure animations
+ * - Responsive design with protection considerations
+ */
+
+/* ===== HONEYPOT FIELD HIDING TECHNIQUES ===== */
+
+/* Method 1: Display none - Basic hiding */
+.hp-display-none {
+    display: none !important;
+}
+
+/* Method 2: Off-screen positioning */
+.hp-offscreen {
+    position: absolute !important;
+    left: -9999px !important;
+    top: -9999px !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    opacity: 0 !important;
+}
+
+/* Method 3: Hidden with visibility */
+.hp-hidden {
+    position: absolute !important;
+    visibility: hidden !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+}
+
+/* Method 4: CSS transform hiding */
+.hp-transform {
+    position: absolute !important;
+    transform: translateX(-10000px) translateY(-10000px) !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+/* Method 5: Z-index hiding */
+.hp-zindex {
+    position: absolute !important;
+    z-index: -9999 !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+}
+
+/* Method 6: Clip path hiding */
+.hp-clip {
+    position: absolute !important;
+    clip: rect(1px, 1px, 1px, 1px) !important;
+    clip-path: inset(50%) !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+}
+
+/* Method 7: Font size and color hiding */
+.hp-font {
+    position: absolute !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
+    color: transparent !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Method 8: Opacity and size hiding */
+.hp-opacity {
+    position: absolute !important;
+    opacity: 0.001 !important;
+    width: 1px !important;
+    height: 1px !important;
+    transform: scale(0.001) !important;
+    pointer-events: none !important;
+}
+
+/* ===== ANTI-BOT VISUAL DETERRENTS ===== */
+
+/* Bot fallback button styling */
+.bot-fallback {
+    position: absolute !important;
+    left: -9999px !important;
+    top: -9999px !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    z-index: -9999 !important;
+}
+
+/* JavaScript-required elements */
+.js-required {
+    transition: all 0.3s ease !important;
+}
+
+/* Math challenge styling */
+.math-challenge {
+    border: 2px dashed #ddd !important;
+    border-radius: 8px !important;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.math-challenge::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: -100% !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent) !important;
+    animation: shimmer 3s infinite !important;
+}
+
+@keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+.math-question {
+    font-family: 'Courier New', monospace !important;
+    font-size: 18px !important;
+    font-weight: bold !important;
+    color: #495057 !important;
+    margin-bottom: 15px !important;
+    text-align: center !important;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+}
+
+/* Math digit styling for interaction */
+.math-digit {
+    display: inline-block !important;
+    min-width: 20px !important;
+    height: 30px !important;
+    line-height: 30px !important;
+    text-align: center !important;
+    background: #fff !important;
+    border: 2px solid #007cba !important;
+    border-radius: 4px !important;
+    margin: 0 2px !important;
+    font-weight: bold !important;
+    font-size: 16px !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.math-digit:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 8px rgba(0,124,186,0.3) !important;
+    background: #f0f8ff !important;
+}
+
+.math-digit:active {
+    transform: translateY(0) !important;
+    box-shadow: 0 2px 4px rgba(0,124,186,0.3) !important;
+}
+
+/* ===== PROGRESSIVE DISCLOSURE ANIMATIONS ===== */
+
+/* Fade in animation for revealed elements */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.6s ease-out !important;
+}
+
+/* Slide in animation */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.slide-in-left {
+    animation: slideInLeft 0.5s ease-out !important;
+}
+
+/* ===== FORM FIELD PROTECTION ===== */
+
+/* Add subtle delay to form field focus */
+.form-group input,
+.form-group textarea {
+    transition: all 0.3s ease !important;
+    position: relative !important;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none !important;
+    border-color: #007cba !important;
+    box-shadow: 0 0 0 3px rgba(0,124,186,0.1) !important;
+    transform: translateY(-1px) !important;
+}
+
+/* Prevent automated form filling */
+.form-group input:-webkit-autofill,
+.form-group input:-webkit-autofill:hover,
+.form-group input:-webkit-autofill:focus,
+.form-group input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s !important;
+    -webkit-text-fill-color: #495057 !important;
+}
+
+/* ===== ANTI-DEBUGGING STYLES ===== */
+
+/* Hide elements from screen readers that are meant for bots */
+.sr-only-bot {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0,0,0,0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+/* Anti-inspection styles */
+.no-select {
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+}
+
+.no-copy {
+    -webkit-touch-callout: none !important;
+    -webkit-user-select: none !important;
+    -khtml-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+}
+
+/* ===== RESPONSIVE DESIGN WITH PROTECTION ===== */
+
+@media (max-width: 768px) {
+    .math-challenge {
+        margin: 15px 0 !important;
+        padding: 15px !important;
+    }
+    
+    .math-digit {
+        min-width: 18px !important;
+        height: 28px !important;
+        line-height: 28px !important;
+        font-size: 14px !important;
+        margin: 0 1px !important;
+    }
+    
+    .math-question {
+        font-size: 16px !important;
+    }
+    
+    /* Ensure honeypots remain hidden on mobile */
+    .hp-offscreen {
+        left: -99999px !important;
+        top: -99999px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .math-digit {
+        min-width: 16px !important;
+        height: 26px !important;
+        line-height: 26px !important;
+        font-size: 12px !important;
+    }
+    
+    .math-question {
+        font-size: 14px !important;
+        line-height: 1.4 !important;
+    }
+}
+
+/* ===== PRINT STYLES ===== */
+
+@media print {
+    /* Hide all protection elements when printing */
+    .hp-display-none,
+    .hp-offscreen,
+    .hp-hidden,
+    .hp-transform,
+    .hp-zindex,
+    .hp-clip,
+    .hp-font,
+    .hp-opacity,
+    .bot-fallback,
+    .math-challenge {
+        display: none !important;
+    }
+    
+    /* Ensure form is printable */
+    .contact-form {
+        display: block !important;
+        visibility: visible !important;
+        position: static !important;
+    }
+}
+
+/* ===== ACCESSIBILITY CONSIDERATIONS ===== */
+
+/* Ensure legitimate form fields remain accessible */
+.form-group:not(.hp-field) input,
+.form-group:not(.hp-field) textarea,
+.form-group:not(.hp-field) label {
+    position: static !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: auto !important;
+    height: auto !important;
+    overflow: visible !important;
+    clip: auto !important;
+    clip-path: none !important;
+    z-index: auto !important;
+    transform: none !important;
+    pointer-events: auto !important;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .math-challenge {
+        border-color: #000 !important;
+        background: #fff !important;
+    }
+    
+    .math-digit {
+        border-color: #000 !important;
+        background: #fff !important;
+        color: #000 !important;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .math-challenge::before {
+        animation: none !important;
+    }
+    
+    .math-digit,
+    .js-required,
+    .fade-in-up,
+    .slide-in-left {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+/* ===== DARK MODE SUPPORT ===== */
+
+@media (prefers-color-scheme: dark) {
+    .math-challenge {
+        background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%) !important;
+        border-color: #4a5568 !important;
+    }
+    
+    .math-question {
+        color: #e2e8f0 !important;
+    }
+    
+    .math-digit {
+        background: #2d3748 !important;
+        border-color: #4299e1 !important;
+        color: #e2e8f0 !important;
+    }
+    
+    .math-digit:hover {
+        background: #4a5568 !important;
+    }
+}
