@@ -1,5 +1,9 @@
 # Contact Form Spam Protection for ProcessWire
 
+> [!WARNING]  
+> This is 90% dummy code to outline the concept.
+> This is NOT a module you should ever install!
+
 A comprehensive spam protection system for ProcessWire contact forms using only core ProcessWire and PHP 8.2 features, without any third-party services.
 
 ## Features
